@@ -8,7 +8,7 @@ import io.vertx.realworld.dto.WelcomeTemplateDTO;
 
 @EmailTemplate(name = Constants.WELCOME_TEMPLATE_NAME)
 public class WelcomeEmailTemplate extends AbstractEmailTemplate<WelcomeTemplateDTO> {
-	private static final String WELCOME_TEMPLATE_PATH = "../vertx-realworld-example-app/src/main/resources/welcome_template.html";
+	private static final String WELCOME_TEMPLATE_PATH = "../vertx-realworld-app/src/main/resources/welcome_template.html";
 
 	public WelcomeEmailTemplate() {
 		super(WELCOME_TEMPLATE_PATH);

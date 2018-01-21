@@ -22,6 +22,8 @@ public class AppUser extends Base {
 	private String password;
 	private String salt;
 
+	private transient String fullName;
+
 	// Mandatory for data objects
 	public AppUser(JsonObject jsonObject) {
 		AppUserConverter.fromJson(jsonObject, this);
@@ -70,6 +72,10 @@ public class AppUser extends Base {
 
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+
+	public String getFullName() {
+		return String.join(" ", this.firstName, this.lastName);
 	}
 
 	public JsonObject toJson() {

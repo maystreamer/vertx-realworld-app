@@ -15,14 +15,14 @@
 			"worker": false,
 			"workerPoolSize": 200
 		},
-		"fromAddress": "your_email_address@gmail.com",
 		"mailConfig": {
+			"fromAddress": "sam27313@gmail.com",
 			"hostname": "smtp.gmail.com",
 			"port": 465,
 			"starttls": "REQUIRED",
 			"login": "NONE",
-			"username": "your_email_address@gmail.com",
-			"password": "Password_Here",
+			"username": "sam27313@gmail.com",
+			"password": "Password@123",
 			"trustAll": false,
 			"ssl": true,
 			"maxPoolSize": 10,

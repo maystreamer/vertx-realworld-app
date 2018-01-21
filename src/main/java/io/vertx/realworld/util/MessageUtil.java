@@ -8,6 +8,7 @@ import io.vertx.ext.mail.MailMessage;
 import io.vertx.reactivex.core.Vertx;
 import io.vertx.realworld.constant.Constants;
 import io.vertx.realworld.dto.WelcomeTemplateDTO;
+import io.vertx.realworld.helper.ConfigHelper;
 import io.vertx.realworld.helper.MessageServiceHelper;
 import io.vertx.realworld.messaging.EmailMessage;
 import io.vertx.realworld.messaging.EmailMessageConverter;
@@ -23,13 +24,13 @@ public class MessageUtil {
 	@SuppressWarnings("unchecked")
 	public static void doSendWelcomeMail(final AppUser user, final String tempLink, final Vertx vertx)
 			throws ClassNotFoundException, IOException {
-		WelcomeTemplateDTO data = new WelcomeTemplateDTO(user.getEmail(), tempLink);
+		WelcomeTemplateDTO data = new WelcomeTemplateDTO(user.getFullName(), tempLink);
 		AbstractEmailTemplate<WelcomeTemplateDTO> emailTemplate = TemplateFactory
 				.getTemplate(Constants.WELCOME_TEMPLATE_NAME);
 		String content = emailTemplate.generateTemplate(data);
 
 		EmailMessage emailMsg = new EmailMessage.Builder().setTo(ResponseUtil.toList(user.getEmail()))
-				.setContent(content).setFrom("skukreti@gmail.com").setIsContentHTML(true)
+				.setContent(content).setFrom(ConfigHelper.getFromAddress()).setIsContentHTML(true)
 				.setSubject("Welcome to the family of Greyseals").build();
 		doSendMail(EmailMessageConverter.toMailMessage(emailMsg, vertx));
 

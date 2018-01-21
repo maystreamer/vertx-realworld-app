@@ -25,6 +25,7 @@ public class Constants {
 	public static final String CONFIG_HTTP_SERVER_OPTIONS = "http_server_options";
 	public static final String IS_SSL_ENABLED = "ssl";
 	public static final String CONFIG_MAIL_NAME = "mailConfig";
+	public static final String CONFIG_MAIL_FROM_ADDRESS = "fromAddress";
 
 	public static final String AUTH_SCHEME = "BEARER";
 	public static final String CORRELATION_ID = "CORRELATION-ID";

@@ -4,7 +4,6 @@ import io.vertx.core.http.HttpMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.reactivex.core.Vertx;
 import io.vertx.reactivex.ext.web.RoutingContext;
-import io.vertx.realworld.annotation.Protected;
 import io.vertx.realworld.annotation.RequestMapping;
 import io.vertx.realworld.constant.Constants;
 import io.vertx.realworld.constant.MediaType;
@@ -21,7 +20,6 @@ public class PingHandler extends BaseHandler {
 	}
 
 	@Override
-	@Protected
 	@RequestMapping(method = HttpMethod.GET, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public void handle(RoutingContext ctx) {
 		ApiResponse<JsonObject> response;

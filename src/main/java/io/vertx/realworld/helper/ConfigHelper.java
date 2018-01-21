@@ -71,4 +71,8 @@ public class ConfigHelper {
 	public static JsonObject getMailconfig() {
 		return getValueByEnvironment(Constants.CONFIG_MAIL_NAME);
 	}
+
+	public static String getFromAddress() {
+		return getMailconfig().getString(Constants.CONFIG_MAIL_FROM_ADDRESS);
+	}
 }
