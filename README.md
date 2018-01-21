@@ -117,6 +117,12 @@ Successful Response would be: <br />
 }
 ```
 
+##Note
+Execute the below scripts to the mongo collections <br />
+db.app_users.createIndex( { "email": 1 }, { unique: true } ) <br />
+db.sessions.createIndex( { "token": 1 }, { expireAfterSeconds: 86400 } ) <br />
+db.temporary_links.createIndex( { "link": 1 }, { expireAfterSeconds: 86400 } )<br />
+
 ## Built With
 
 * [Vertx](http://vertx.io/) - The web framework used
