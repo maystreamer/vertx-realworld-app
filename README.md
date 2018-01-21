@@ -116,7 +116,6 @@ Successful Response would be: <br />
   }
 }
 ```
-<br />
 ## Note
 Execute the below scripts to the mongo collections <br />
 db.app_users.createIndex( { "email": 1 }, { unique: true } ) <br />
