@@ -1,0 +1,48 @@
+= Cheatsheets
+
+[[AppUser]]
+== AppUser
+
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[createdDate]]`createdDate`|`String`|-
+|[[email]]`email`|`String`|-
+|[[firstName]]`firstName`|`String`|-
+|[[isActive]]`isActive`|`Boolean`|-
+|[[lastName]]`lastName`|`String`|-
+|[[password]]`password`|`String`|-
+|[[salt]]`salt`|`String`|-
+|[[updatedDate]]`updatedDate`|`String`|-
+|===
+
+[[Session]]
+== Session
+
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[createdDate]]`createdDate`|`String`|-
+|[[isActive]]`isActive`|`Boolean`|-
+|[[token]]`token`|`String`|-
+|[[updatedDate]]`updatedDate`|`String`|-
+|===
+
+[[TemporaryLink]]
+== TemporaryLink
+
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[createdDate]]`createdDate`|`String`|-
+|[[isActive]]`isActive`|`Boolean`|-
+|[[link]]`link`|`String`|-
+|[[updatedDate]]`updatedDate`|`String`|-
+|===
+

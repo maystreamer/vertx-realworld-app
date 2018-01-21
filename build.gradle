@@ -1,0 +1,96 @@
+buildscript {
+	ext {
+		vertxVersion			=	"3.5.0"
+		logbackVersion		=	"1.2.3"
+		slf4jVersion			=	"1.5.25"
+		reflectionVersion	=	"0.9.11"
+		gradleVersion		=	"4.3.1"		
+		commonsLang3Version	=	"3.5"
+		modelMapperVersion	=	"1.1.2"
+		sourceJavaVersion	=	"1.8"
+		targetJavaVersion	=	"1.8"
+	}
+}
+
+plugins {
+	id 'com.github.johnrengelman.shadow' version '2.0.1'
+	id 'java'
+	id 'eclipse'
+	id 'application'
+}
+
+repositories {
+	jcenter()
+	maven { url "https://plugins.gradle.org/m2/" }
+}
+
+mainClassName = 'io.vertx.realworld.AppLauncher'
+
+shadowJar {
+	baseName = 'thor'
+	version = '0.0.1'
+	classifier = 'fat'
+	manifest {
+		attributes 'Main-Verticle': 'io.vertx.realworld.verticle'
+	}
+	mergeServiceFiles {
+		include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
+	}
+}
+
+sourceSets {
+    generated{
+        java.srcDir "${projectDir}/src/generated/java"
+    }
+}
+
+dependencies {
+    compile "io.vertx:vertx-web:${vertxVersion}",
+	    		"io.vertx:vertx-rx-java2:${vertxVersion}",
+	    	    "io.vertx:vertx-service-proxy:${vertxVersion}",
+	    	    "io.vertx:vertx-mongo-client:${vertxVersion}",
+	    	    "io.vertx:vertx-mail-client:${vertxVersion}",
+	    	    "ch.qos.logback:logback-classic:${logbackVersion}",
+	    	    "ch.qos.logback:logback-core:${logbackVersion}",
+	    	    "org.slf4j:slf4j-api:${slf4jVersion}",
+	    	    "org.apache.commons:commons-lang3:${commonsLang3Version}",
+	    	    "org.reflections:reflections:${reflectionVersion}",
+			"io.vertx:vertx-service-proxy:${vertxVersion}:processor",
+			"org.modelmapper:modelmapper:${modelMapperVersion}"
+
+	compileOnly "io.vertx:vertx-codegen:${vertxVersion}"
+	testCompile "io.vertx:vertx-unit:${vertxVersion}"		
+}
+
+task annotationProcessing(type: JavaCompile, group: 'build') { // codegen
+	source = sourceSets.main.java
+	classpath = configurations.compile + configurations.compileOnly
+	destinationDir = project.file('src/main/generated')
+	options.compilerArgs = [
+		"-proc:only",
+		"-processor", "io.vertx.codegen.CodeGenProcessor",
+		"-AoutputDirectory=${project.projectDir}/src/main"
+  ]
+}
+
+compileJava {
+	targetCompatibility = sourceJavaVersion
+	sourceCompatibility = targetJavaVersion
+	dependsOn annotationProcessing
+}
+
+sourceSets {
+  main {
+    java {
+      srcDirs += 'src/main/generated'
+    }
+  }
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = gradleVersion
+}
+
+run {
+	args = ['run', "io.vertx.realworld.verticle", "--launcher-class=io.vertx.realworld.AppLauncher"]
+}

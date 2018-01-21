@@ -1,0 +1,80 @@
+{
+	"http_protocol": "http://",
+	"http_server_host": "localhost",
+	"http_server_port": 8080,
+	"context_path": "/runner/api",
+	"verticle_package_name": "io.vertx.realworld.verticle",
+	"reflection_package_name": "io.vertx.realworld.handler",
+	"http2Enabled": false,
+	"dev": {
+		"messagingVerticle": {
+			"ha": false,
+			"instances": 1,
+			"maxWorkerExecuteTime": 60000000000,
+			"multiThreaded": false,
+			"worker": false,
+			"workerPoolSize": 200
+		},
+		"fromAddress": "sam27313@gmail.com",
+		"mailConfig": {
+			"hostname": "smtp.gmail.com",
+			"port": 465,
+			"starttls": "REQUIRED",
+			"login": "NONE",
+			"username": "sam27313@gmail.com",
+			"password": "Password@123",
+			"trustAll": false,
+			"ssl": true,
+			"maxPoolSize": 10,
+			"keepAlive": true,
+			"allowRcptErrors": false,
+			"disableEsmtp": false
+		},
+		"httpServerVerticle": {
+			"ha": false,
+			"instances": 1,
+			"maxWorkerExecuteTime": 60000000000,
+			"multiThreaded": false,
+			"worker": false,
+			"workerPoolSize": 200
+		},
+		"databaseVerticle": {
+			"ha": false,
+			"instances": 1,
+			"maxWorkerExecuteTime": 60000000000,
+			"multiThreaded": true,
+			"worker": true,
+			"workerPoolSize": 200
+		},
+		"http_server_options": {
+			"acceptUnmaskedFrames": false,
+			"alpnVersions": [
+				"HTTP_2",
+				"HTTP_1_1"
+			],
+			"compressionLevel": 6,
+			"compressionSupported": true,
+			"decompressionSupported": false,
+			"handle100ContinueAutomatically": false,
+			"http2ConnectionWindowSize": -1,
+			"initialSettings": {
+				"headerTableSize": 4096,
+				"initialWindowSize": 65535,
+				"maxConcurrentStreams": 100,
+				"maxFrameSize": 16384,
+				"maxHeaderListSize": 2147483647,
+				"pushEnabled": true
+			},
+			"maxChunkSize": 8192,
+			"maxHeaderSize": 8192,
+			"maxInitialLineLength": 4096,
+			"maxWebsocketFrameSize": 65536,
+			"maxWebsocketMessageSize": 262144
+		},
+		"mongoConfig": {
+			"db_name": "vertx-ex",
+			"connection_string": "mongodb://127.0.0.1:27017/?serverselectiontimeoutms=10000;serverselectiontimeoutms=10000",
+			"useObjectId": true
+		}
+	}
+}
