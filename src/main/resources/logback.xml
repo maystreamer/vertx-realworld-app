@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-	<!-- <property name="LOG_FILE_PATH" value="/home/ubuntu/io-vertx-realworld/Logs" 
-		/> -->
 	<property name="LOG_FILE_PATH" value="logs" />
 	<property name="LOG_FILE_NAME" value="app" />
 
