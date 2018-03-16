@@ -31,7 +31,7 @@ shadowJar {
 	version = '0.0.1'
 	classifier = 'fat'
 	manifest {
-		attributes 'Main-Verticle': 'io.vertx.realworld.verticle'
+		attributes 'Main-Verticle': 'io.vertx.realworld.verticle.MainVerticle'
 	}
 	mergeServiceFiles {
 		include 'META-INF/services/io.vertx.core.spi.VerticleFactory'
